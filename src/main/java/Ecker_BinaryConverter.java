@@ -5,17 +5,38 @@ public class Ecker_BinaryConverter {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int dezimal = 64;
-        int res = dezimal;
-        int zweierPotenz = 2;
+        int decimal;
+        int res;
+        int zweierPotenz = 1;
+        int input = 0;
 
         do {
-            zweierPotenz = zweierPotenz * 2;
-            res /= zweierPotenz;
-        }
-        while(res > 0);
+            System.out.print("Decimal: ");
+            input = scanner.nextInt();
 
-        System.out.println(zweierPotenz);
+            if (input > 0){
+                decimal = input;
+                zweierPotenz = 1;
+                do {
+                    res = decimal / zweierPotenz;
+                    if (res > 1) {
+                        zweierPotenz = zweierPotenz * 2;
+                    }
+                } while (res > 1);
+
+                System.out.print("binary : ");
+
+                while (zweierPotenz >= 1){
+                    res = decimal / zweierPotenz;
+                    System.out.print(res);
+                    decimal = decimal % zweierPotenz;
+                    zweierPotenz /= 2;
+                }
+
+                System.out.println();
+                System.out.println();
+            }
+        } while (input != 0);
     }
 }
 
